@@ -1,90 +1,30 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>VideoEducationApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>VideoEducationApp</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
 
-  <!-- Dropdown Structure -->
-  <ul id="dropdown1" class="dropdown-content">
-    <li><a href="#!">My Profile</a></li>
-    <li><a href="#!">My Courses</a></li>
-    <li class="divider"></li>
-    <li><a href="#!">Log out</a></li>
-  </ul>
+  <body>
 
-  <ul id="dropdown2" class="dropdown-content">
-    <li><a href="#!">My Profile</a></li>
-    <li><a href="#!">My Courses</a></li>
-    <li class="divider"></li>
-    <li><a href="#!">Log out</a></li>
-  </ul>
+    <%= render partial: 'shared/header' %>
+    <%= render partial: 'shared/message' %>
 
-  <header>
-    <nav class="brown lighten-4 z-depth-2">
+    <main>
       <div class="container">
-        <div class="nav-wrapper">
-          <a href="#!" class="brand-logo">Video Education App</a>
-          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-          <ul class="right hide-on-med-and-down">
-            <li><a href="#">Courses</a></li>
-            <li><a href="#">Sign Up</a></li>
-            <li><a href="#">Login</a></li>
-            <!-- Dropdown Trigger -->
-            <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Taro Yamada<i class="material-icons right"></i></a></li>
-          </ul>
-          <ul class="side-nav" id="mobile-demo">
-            <li><a href="#">Courses</a></li>
-            <li><a href="#">Sign Up</a></li>
-            <li><a href="#">Login</a></li>
-            <!-- Dropdown Trigger -->
-            <!-- Dropdown Trigger -->
-            <li><a class="dropdown-button" href="#!" data-activates="dropdown2">Taro Yamada<i class="material-icons right"></i></a></li>
-          </ul>
-        </div>
+        <%= yield %>
       </div>
-    </nav>
-  </header>
+    </main>
 
-  <main>
-    <div class="container">
-      <%= yield %>
-    </div>
-  </main>
-
-    <footer class="page-footer brown lighten-4">
-      <div class="container">
-        <div class="row">
-          <div class="col l6 s12">
-            <h5 class="white-text">Video Education App</h5>
-            <p class="grey-text text-lighten-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Voluptatibus ea sequi optio tempore, sint dolores eum quaerat ab? Quam animi, possimus quo harum, eius nihil similique. Possimus eos dolorum dicta!</p>
-          </div>
-          <div class="col l4 offset-l2 s12">
-            <h5 class="white-text">Social</h5>
-            <ul>
-              <li><a class="grey-text text-lighten-3" href="#!">Twitter</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Facebook</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Google Plus</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="footer-copyright">
-        <div class="container">
-        © 2016 Copyright Video Education App
-        <%= link_to "About Us", pages_about_path, :class => "grey-text text-lighten-4" %>
-        </div>
-      </div>
-    </footer>
+    <%= render partial: 'shared/footer' %>
 
   </body>
 
-  <script>
-    $(".button-collapse").sideNav();
-    $(".dropdown-button").dropdown();
-  </script>
+    <script>
+      $(".button-collapse").sideNav();
+      $(".dropdown-button").dropdown();
+    </script>
 
 </html>
