@@ -36,6 +36,9 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'active_skin'
 
 gem 'paperclip', '~> 5.1'
+
+gem 'redcarpet', '~> 3.2', '>= 3.2.3'
+gem 'coderay', '~> 1.1'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7
 
