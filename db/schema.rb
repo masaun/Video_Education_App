@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160907050643) do
+ActiveRecord::Schema.define(version: 20160908045557) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -46,6 +46,19 @@ ActiveRecord::Schema.define(version: 20160907050643) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",           limit: 255, null: false
+    t.integer  "sluggable_id",   limit: 4,   null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope",          limit: 255
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
   create_table "projects", force: :cascade do |t|
     t.string   "name",               limit: 255
     t.text     "content",            limit: 65535
@@ -56,7 +69,10 @@ ActiveRecord::Schema.define(version: 20160907050643) do
     t.string   "image_content_type", limit: 255
     t.integer  "image_file_size",    limit: 4
     t.datetime "image_updated_at"
+    t.string   "slug",               limit: 255
   end
+
+  add_index "projects", ["slug"], name: "index_projects_on_slug", unique: true, using: :btree
 
   create_table "tasks", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -67,9 +83,11 @@ ActiveRecord::Schema.define(version: 20160907050643) do
     t.integer  "project_id", limit: 4
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
+    t.string   "slug",       limit: 255
   end
 
   add_index "tasks", ["project_id"], name: "index_tasks_on_project_id", using: :btree
+  add_index "tasks", ["slug"], name: "index_tasks_on_slug", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
