@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true, length: {maximum: 25}
 
-  
+  has_many :subscriptions
+  has_many :projects, through: :subscriptions
 
   def self.find_for_google_oauth2(acccess_token, signed_in_resourse=nil)
     data = acccess_token.info
