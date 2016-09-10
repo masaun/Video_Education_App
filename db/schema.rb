@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160909044932) do
+ActiveRecord::Schema.define(version: 20160910123309) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -74,6 +74,18 @@ ActiveRecord::Schema.define(version: 20160909044932) do
 
   add_index "projects", ["slug"], name: "index_projects_on_slug", unique: true, using: :btree
 
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "project_id", limit: 4
+    t.integer  "user_id",    limit: 4
+    t.text     "comment",    limit: 65535
+    t.datetime "created_at",               null: false
+    t.integer  "star",       limit: 4
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "reviews", ["project_id"], name: "index_reviews_on_project_id", using: :btree
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
+
   create_table "subscriptions", force: :cascade do |t|
     t.integer  "project_id", limit: 4
     t.integer  "user_id",    limit: 4
@@ -122,6 +134,8 @@ ActiveRecord::Schema.define(version: 20160909044932) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "reviews", "projects"
+  add_foreign_key "reviews", "users"
   add_foreign_key "subscriptions", "projects"
   add_foreign_key "subscriptions", "users"
   add_foreign_key "tasks", "projects"

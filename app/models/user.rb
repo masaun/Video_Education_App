@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   has_many :subscriptions
   has_many :projects, through: :subscriptions
 
+  has_many :reviews
+
   def self.find_for_google_oauth2(acccess_token, signed_in_resourse=nil)
     data = acccess_token.info
     user = User.where(:provider => acccess_token.provider, :uid => acccess_token.uid).first
