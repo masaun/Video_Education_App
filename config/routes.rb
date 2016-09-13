@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'pages/about'
   get '/myprojects' => 'project#list'
   post '/free' => 'charge#free'
+  post '/pay' => 'charge#pay'
 
   root 'project#index'
 
