@@ -45,6 +45,8 @@ gem 'friendly_id', '~> 5.1'
 gem 'active_admin-sortable_tree', '~> 0.2.1'
 
 gem 'stripe'
+
+gem 'figaro', '~> 1.1', '>= 1.1.1'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7
 
