@@ -47,7 +47,7 @@ Rails.application.configure do
     :address => "smtp.gmail.com",
     :port => 587,
     :user_name =>'clubworldcup2015@gmail.com',
-    :password => 'worldcup2015',
+    :password => ENV['MAILER_API_KEY'],
     :authentication => 'login'
   }
 
