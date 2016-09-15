@@ -1,5 +1,5 @@
 <% if @reviews.blank? %>
-  <span class="center">There is no review yet</span>
+  <span class="center"><h4>There is no review yet</h4></span>
 <% end %>
 
 <% @reviews.order("id desc").each do |r| %>
@@ -12,15 +12,15 @@
 
     <div class="col m10">
       <div>
-        <strong><%= r.user.name %></strong>
-        <span class="right"><%= timeago(r.created_at) %></span>
+        <strong><%= r.user.name %></strong>       
+        <span class="right"><%= timeago(r.created_at) %></span> 
       </div>
       <div id="stars_<%= r.id %>"></div>
       <div><%= r.comment %></div>
       <div>
         <%= link_to "Remove", [@project, r], method: :delete, data: {confirm: "Are you sure?"} if current_user && current_user.id == r.user.id %>
       </div>
-
+      
     </div>
   </div>
 

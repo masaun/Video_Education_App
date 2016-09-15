@@ -132,30 +132,31 @@
         
         <div id="videos" class="col s10 offset-s1">
           <div class="collection" data-no-turbolink>
-              <% @tasks.each do |task| %>
-                <% if task.header %>
-                  <div class="collection-item active">
-                    <i class="mdi-social-school"><%= task.title %></i>
-                  </div>
-                <% else %>
-                  <%= link_to [task.project, task], class: "collection-item" do %>
-                    <%= task.title %>
-                  <% end %>
+            <% @tasks.each do |task| %>
+              <% if task.header %>
+                <div class="collection-item active">
+                  <i class="mdi-social-school"><%= task.title %></i>
+                </div>
+              <% else %>
+                <%= link_to [task.project, task], class: "collection-item" do %>
+                  <%= task.title %>
                 <% end %>
               <% end %>
-            </div>
+            <% end %>
           </div>
         </div>
 
-        <div id="discussion" class="col s12">
+        <div id="discussions" class="col s10 offset-s1">
           <!-- Discussion would be here -->
+          
+
         </div>
       </div>
 
-      
     </div>
   </div>
 </div>
+
 
 <script>
   $('#average_rating').raty({
